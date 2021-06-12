@@ -7,26 +7,22 @@ class App1 extends Component {
     super();
 
     this.state = {
-      products: [],
+      monsters: [],
     };
   }
 
   componentDidMount() {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((users) => this.setState({ products: users }))
+      .then((users) => this.setState({ monsters: users }))
       .catch((rejectedValue) => console.log("Error"));
   }
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <CardList name="Ark">
-            {this.state.products.map((product) => (
-              <h1 key={product.id}>{product.name}</h1>
-            ))}
-          </CardList>
+        <header className="">
+          <CardList monsters={this.state.monsters} />
         </header>
       </div>
     );
